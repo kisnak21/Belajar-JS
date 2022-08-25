@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Event World</title>
+
+        <style>
+            .contents {
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                border: 2px solid black;
+                padding: 15px;
+            }
+
+            #generateButton {
+                margin-top: 5px;
+                margin-bottom: 15px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="contents" align="center" hidden="hidden">
+            <button id="incrementButton">Tekan Aku :)</button>
+            <h3>Kamu sudah menekan tombol di atas sebanyak
+                <span id="count">0</span></h3>
+        </div>
+
+        <script>
+            //untuk menghitung jumlah klik dg kondisi 10 klik mendapat secret message
+            function increment() {
+                document
+                    .getElementById('count')
+                    .innerText++;
+                if (document.getElementById('count').innerText == 10) {
+                    const hiddenMessage = document.createElement('h4');
+                    hiddenMessage.innerText = 'Selamat kamu menemukan secret message';
+
+                    const image = document.createElement('img');
+                    image.setAttribute('src', 'https://i.ibb.co/0V49VRZ/catto.jpg');
+
+                    const contents = document.querySelector('.contents');
+                    contents
+                        .appendChild(hiddenMessage)
+                        .appendChild(image);
+                }
+
+            }
+            // untuk memunculkan konten website yang di hidden
+            function welcome() {
+                alert('simsalabim website muncul!');
+                const contents = document.querySelector('.contents');
+                contents.removeAttribute('hidden');
+            }
+
+            //addEventListener
+            window.addEventListener('load', welcome);
+            document.getElementById('incrementButton').addEventListener('click', increment );
+        </script>
+    </body>
+</html>
